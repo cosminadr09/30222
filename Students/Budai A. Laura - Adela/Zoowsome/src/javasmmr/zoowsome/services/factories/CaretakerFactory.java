@@ -6,9 +6,9 @@ import javasmmr.zoowsome.models.employees.Employee;
 public class CaretakerFactory extends EmployeeAbstractFactory {
 	
 	public Employee getEmployee(String type) throws Exception {
-		if(Constants.Employees.CARETAKER.equals(type))
+		if(Constants.Employees.CARETAKER.equals(type)){
 			return new Caretaker();
-		else
+		}else
 			throw new Exception("Invalid employee specification");
 	}
 }
