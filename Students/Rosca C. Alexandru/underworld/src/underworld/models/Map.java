@@ -10,29 +10,27 @@ public class Map {
 	}
 	
 	public void generateResources(){
-		for (int i=0; i<Constants.MAP_RESOURCES_NUMBER; i++ )
-			resources[i]=Resources.generateValuableResources();
+		for (int i = 0; i < Constants.MAP_RESOURCES_NUMBER; i++ ){
+			resources[i] = Resources.generateValuableResources();
+		}
 	}
 	
 	public boolean consumeResource(int resource){
 		
 		boolean count=false;
-		for(int i=0; i<Constants.MAP_RESOURCES_NUMBER; i++){
-			if(resources[i]==resource){
-				resources[i]=-1;
-				count=true;
+		for(int i = 0; i < Constants.MAP_RESOURCES_NUMBER; i++){
+			if(resources[i] == resource){
+				resources[i] = -1;
+				count = true;
 			}
-		}
-			
-			return count;
-		
-				
+		}	
+			return count;	
 	}
 	
 	public void showResources(){
 		
 		System.out.println("Resources: ");
-		for(int i=0; i< Constants.MAP_RESOURCES_NUMBER; i++)
+		for(int i = 0; i< Constants.MAP_RESOURCES_NUMBER; i++)
 			System.out.print(" "+resources[i]);
 	}
 }

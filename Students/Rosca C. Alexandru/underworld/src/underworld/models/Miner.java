@@ -10,9 +10,9 @@ public class Miner {
 	private int backpackIndex;
 	
 	public Miner(String name){
-		backpackIndex=0;
-		this.name=name;
-		for(int i=0; i<Constants.MINER_BACKPACK_SIZE; i++){
+		backpackIndex = 0;
+		this.name = name;
+		for(int i = 0; i<Constants.MINER_BACKPACK_SIZE; i++){
 			backpack[i]=-1;
 		}
 	}
@@ -27,10 +27,10 @@ public class Miner {
 	
 	public int dig(){
 		if(isBackpackfull())
-			return 0; //nu e bine
+			return 0;
 		else 
 		{	backpack[backpackIndex]=Resources.generateValuableResources();
-			return backpack[backpackIndex];
+			return backpack[backpackIndex++];
 		}
 	}
 	
@@ -39,7 +39,7 @@ public class Miner {
 	}
 	
 	private boolean isBackpackfull(){
-		if(backpackIndex==Constants.MINER_BACKPACK_SIZE)
+		if(backpackIndex == Constants.MINER_BACKPACK_SIZE)
 			return true;
 		else
 			return false;
@@ -47,7 +47,7 @@ public class Miner {
 	
 	public void showBackpack(){
 		System.out.println("Resources: ");
-		for(int i=0; i <= backpackIndex; i++){
+		for(int i = 0; i <= backpackIndex; i++){
 			System.out.println(backpack[i] + " ");
 			System.out.println("/n");
 		}
