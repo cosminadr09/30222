@@ -36,7 +36,7 @@ public class MainController {
 		for(int i = 0; i < c.length; i++){
 			for(int j = 0; j < a.length; i++){
 				if (!(c[i].getIsDead() && a[j].getTakenCareOf())){
-					result = ((Caretakers) c[i].takeCareOf(a[j]));
+					result = ((Caretakers) c[i].takenCareOf(a[j]));
 					System.out.println("The caretaker is dead");
 					c[i].setIsDead(true);
 				}
