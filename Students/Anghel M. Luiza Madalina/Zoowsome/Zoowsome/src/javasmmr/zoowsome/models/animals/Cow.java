@@ -1,14 +1,18 @@
 package javasmmr.zoowsome.models.animals;
 
-import java.util.Random;
+import static javasmmr.zoowsome.repositories.AnimalRepository.createNode;
+import javasmmr.zoowsome.services.factories.Constants;
+
+import javax.xml.stream.XMLEventWriter;
+import javax.xml.stream.XMLStreamException;
 
 public class Cow extends Mammal {
-	
+
 	public Cow(int legs, String name) {
 		this.setNrOfLegs(legs);
 		this.setName(name);
 	}
-	
+
 	public Cow() {
 		this.setNrOfLegs(4);
 		this.setName("Cow");
@@ -18,12 +22,8 @@ public class Cow extends Mammal {
 		this.setDangerPerc(0.0);
 	}
 	
-	@Override
-	public boolean kill() {
-		Random random = new Random();
-		int i = random.nextInt(1);
-		if(i < this.getDangerPerc()) {
-			return true;
-		} 	else return false;
+	public void encodeToXml(XMLEventWriter eventWriter) throws XMLStreamException {
+		super.encodeToXml(eventWriter);
+		createNode(eventWriter, Constants.XML_TAGS.DISCRIMINANT,Constants.Animals.Mammals.COW);
 	}
 }
