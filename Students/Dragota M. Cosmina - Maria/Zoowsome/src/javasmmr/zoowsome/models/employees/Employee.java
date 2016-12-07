@@ -2,7 +2,7 @@ package javasmmr.zoowsome.models.employees;
 
 import java.math.BigDecimal;
 
-public abstract class Employees {
+public abstract class Employee {
 	private String name;
 	private long id;
 	private BigDecimal salary;
@@ -41,11 +41,11 @@ public abstract class Employees {
 		this.isDead = isDead;
 	}
 
-	public Employees() {
-
+	public Employee() {
+		
 	}
 
-	public Employees(String name, BigDecimal Salary, boolean isDead) {
+	public Employee(String name, BigDecimal Salary, boolean isDead) {
 		setName(name);
 		setSalary(Salary);
 		setIsDead(isDead);

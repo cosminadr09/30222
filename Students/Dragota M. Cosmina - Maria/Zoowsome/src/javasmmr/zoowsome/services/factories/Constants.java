@@ -10,6 +10,8 @@ public final class Constants {
 	}
 
 	public static final class Animals {
+		public static final int NO_OF_ANIMALS = 100;
+
 
 		public static final class Mammals {
 			public static final String HORSE = "Horse";
@@ -43,16 +45,23 @@ public final class Constants {
 
 	}
 
+	// public static final String CARETAKERS = "Caretakers";
 	public static final class Employees {
-		public static final String CARETAKERS = "Caretakers";
+		public static final class Caretakers {
+			public static final String CARETAKER = "CARETAKER";
+			public static final String TCO_SUCCESS = "SUCCESS";
+			public static final String TCO_KILLED = "KILLED";
+			public static final String TCO_NO_TIME = "NO_TIME";
+			
+			public static final String[] NAME = {"Cosmina", "Iulia", "Nicoleta", "Jon", "Dominique"};
+			public static final int NO_OF_CARETAKERS = 5;
+			
+		}
 	}
-
-	public static final class Caretakers {
-		public static final String BIRD_KEEPER = "Bird_keeper";
-		public static final String MAMMAL_KEEPER = "Mammal_keeper";
-		public static final String AQUATIC_KEEPER = "Aquatic_keeper";
-		public static final String REPTILE_KEEPER = "Reptile_keeper";
-
+	
+	public static final class XML_TAGS{
+		public static final String ANIMAL = "ANIMAL";
+		public static final String DISCRIMINANT = "DISCRIMINANT";
 	}
 
 }

@@ -2,7 +2,22 @@ package javasmmr.zoowsome.models.animals;
 
 import java.util.Random;
 
-public abstract class Animal implements Killer_I {
+import static javasmmr.zoowsome.repositories.AnimalRepository.createNode;
+import javasmmr.zoowsome.models.interfaces.XML_Parsable;
+
+
+//import javax.lang.model.element.Element;
+import javax.xml.stream.XMLEventFactory;
+import javax.xml.stream.XMLEventWriter;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.events.Characters;
+import javax.xml.stream.events.EndElement;
+import javax.xml.stream.events.StartElement;
+import javax.xml.stream.events.XMLEvent;
+
+import org.w3c.dom.Element;
+
+public abstract class Animal implements Killer_I, XML_Parsable {
 	/**
 	 * it is an abstract class – you cannot create any instance of it, however
 	 * it can contain non-abstract methods and can be extended
@@ -21,7 +36,6 @@ public abstract class Animal implements Killer_I {
 	 * final fields have to be initialized in a constructor and their values
 	 * cannot be changed
 	 * 
-	 * @return
 	 */
 
 	public int getNoOfLegs() {
@@ -39,6 +53,17 @@ public abstract class Animal implements Killer_I {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public double getMaintenanceCost(){
+		return this.maintenanceCost;
+	}
+	
+	
+	public double getDangerPerc(){
+		return this.dangerPerc;
+	}
+	
+	
 
 	/**
 	 * Random random = new Random(); double value = min + (max - min) *
@@ -63,14 +88,28 @@ public abstract class Animal implements Killer_I {
 		this.takenCareOf = takenCareOf;
 	}
 
-	public Animal() {
-
-	}
+//	public Animal() {
+//
+//	}
 
 	// am creat un constructor care va initializa final fields
 	public Animal(double maintenanceCost, double dangerPerc) {
 		this.maintenanceCost = maintenanceCost;
 		this.dangerPerc = dangerPerc;
 	}
+	
+	
+	public void encodeToXml(XMLEventWriter eventWriter) throws XMLStreamException {
+		createNode(eventWriter, "noOfLegs", String.valueOf(this.noOfLegs));
+		createNode(eventWriter, "name", String.valueOf(this.name));
+		createNode(eventWriter, "maintenanceCost", String.valueOf(this.maintenanceCost));
+		createNode(eventWriter, "dangerPerc", String.valueOf(this.dangerPerc));
+		createNode(eventWriter, "takenCareOf", String.valueOf(this.takenCareOf));
+		}
+	public void decodeFromXml(Element element) {
+		setNoOfLegs(Integer.valueOf(element.getElementsByTagName("nrOfLegs").item(0).getTextContent()));
+		setName(element.getElementsByTagName("name").item(0).getTextContent());
+		setTakenCareOf(Boolean.valueOf(element.getElementsByTagName("takenCareOf").item(0).getTextContent()));
+		}
 
 }
